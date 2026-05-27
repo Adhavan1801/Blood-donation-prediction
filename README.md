@@ -60,7 +60,7 @@ Four visualizations were produced on the raw data before any preprocessing:
 
 **Feature Distributions**
 
-<img src="docs/Feature_distributions.png" alt="Distribution of Original Features" width="700"/>
+<img src="docs/Feature_distribution.png" alt="Distribution of Original Features" width="700"/>
 
 > All four features are right-skewed — `Recency` and `Frequency` peak at low values with a long tail. `Monetary` mirrors `Frequency` perfectly (250 c.c. per donation). `Time` is the only feature with a roughly bell-shaped spread, indicating donors have varied membership durations.
 
