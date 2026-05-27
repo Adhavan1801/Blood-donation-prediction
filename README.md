@@ -60,19 +60,19 @@ Four visualizations were produced on the raw data before any preprocessing:
 
 **Feature Distributions**
 
-<img src="docs/feature_distributions.png" alt="Distribution of Original Features" width="700"/>
+<img src="docs/Feature_distributions.png" alt="Distribution of Original Features" width="700"/>
 
 > All four features are right-skewed — `Recency` and `Frequency` peak at low values with a long tail. `Monetary` mirrors `Frequency` perfectly (250 c.c. per donation). `Time` is the only feature with a roughly bell-shaped spread, indicating donors have varied membership durations.
 
 **Outlier Analysis**
 
-<img src="docs/outlier_boxplots.png" alt="Individual Box Plots for Outlier Analysis" width="700"/>
+<img src="docs/Outlier_boxplots.png" alt="Individual Box Plots for Outlier Analysis" width="700"/>
 
 > Box plots confirm significant outliers across all features — especially `Frequency` and `Monetary` where some donors have 50+ donations and 12,000+ c.c. donated. These extreme values were removed using the IQR method (only on the training set) to prevent them from distorting decision boundaries.
 
 **Correlation Matrix**
 
-<img src="docs/correlation_matrix.png" alt="Correlation Matrix of Features" width="500"/>
+<img src="docs/Correlation_matrix.png" alt="Correlation Matrix of Features" width="500"/>
 
 > `Frequency` and `Monetary` show near-perfect correlation (1.00) — this is expected since each donation contributes exactly 250 c.c. `Recency` is negatively correlated with both, meaning donors who gave recently tend to have fewer total donations. `Time` has moderate positive correlation with `Frequency` — longer membership generally means more donations.
 
@@ -127,7 +127,7 @@ param_grid = {
 
 ### Best Model — Decision Tree Visualization
 
-<img src="docs/decision_tree_best_model.png" alt="Decision Tree with Stratified Split and Best Parameters" width="800"/>
+<img src="docs/Decision_tree_best_model.png" alt="Decision Tree with Stratified Split and Best Parameters" width="800"/>
 
 > The final tuned tree splits first on `Recency` — donors who gave recently (Recency ≤ −0.367 in scaled form) are already more likely to donate again. Subsequent splits use `Monetary`, `Frequency`, and `Time` to further refine predictions. Orange nodes predict **No donation**, blue nodes predict **Yes donation**. Leaf node depth is controlled by GridSearchCV to avoid overfitting.
 
