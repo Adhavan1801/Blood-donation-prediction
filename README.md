@@ -39,7 +39,7 @@ Two core challenges make this a non-trivial classification task:
 This project follows a **load → clean → EDA → preprocess → model → tune** paradigm with six key stages:
 
 ### 1.  Data Loading & Initial Analysis
-- Loaded `transfusion.data` from the UCI RFMTC Blood Transfusion dataset
+- Loaded `full_blood_donation_data.csv` from the UCI RFMTC Blood Transfusion dataset
 - Assigned correct column names: `Recency`, `Frequency`, `Monetary`, `Time`, `Don`
 - Inspected shape, dtypes, and statistical summary with `.info()` and `.describe()`
 
@@ -217,7 +217,7 @@ blood-donation-prediction/
 │   └── decision_tree_best_model.png    ← Results: best tuned decision tree
 │
 ├── blood_donation_machine_learning.ipynb   ← full pipeline: EDA → preprocessing → modeling
-├── transfusion.data                        ← UCI RFMTC dataset
+├── full_blood_donation_data.csv            ← UCI RFMTC dataset
 └── README.md                               ← project documentation
 ```
 
