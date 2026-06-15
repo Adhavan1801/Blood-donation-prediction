@@ -123,6 +123,19 @@ CUSTOM_CSS = """
     table tr:hover td {
         background-color: #FFF3E0 !important;
     }
+
+    /* Fix: Visible input boxes */
+    input[type="number"], input[type="text"], .gradio-container input, .svelte-1gfkn6j {
+        border: 1px solid #E0E0E0 !important;
+        background-color: #FFFFFF !important;
+        border-radius: 4px !important;
+        padding: 8px 12px !important;
+        box-shadow: inset 0 1px 2px rgba(0,0,0,0.05) !important;
+    }
+    input[type="number"]:focus, input[type="text"]:focus {
+        border-color: #dd6b3b !important;
+        outline: none !important;
+    }
 """
 
 # ── Gradio UI ─────────────────────────────────────────────────────────
@@ -174,7 +187,7 @@ with gr.Blocks() as demo:
         # Left: Inputs
         with gr.Column(scale=1):
             with gr.Group():
-                gr.Markdown("**Enter Donor Information**")
+                gr.HTML("<h3 style='text-align: center; margin-bottom: 15px; margin-top: 5px; color: #0A0A0A; font-family: \"Inter\", sans-serif;'>Enter Donor Information</h3>")
                 recency   = gr.Number(label="Recency — months since last donation",   value=2,    minimum=0)
                 frequency = gr.Number(label="Frequency — total donations",             value=5,    minimum=1)
                 monetary  = gr.Number(label="Monetary — total blood donated (c.c.)",  value=1250, minimum=250)
