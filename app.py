@@ -143,20 +143,20 @@ with gr.Blocks() as demo:
 
     # ── Header ──
     gr.HTML("""
-    <div style="padding:32px 8px 20px; font-family:'Inter',sans-serif;">
+    <div style="padding:16px 8px 10px; font-family:'Inter',sans-serif;">
       <p style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; font-weight:600;
-                color:#dd6b3b; text-transform:uppercase; letter-spacing:2px; margin:0 0 8px;">
+                color:#dd6b3b; text-transform:uppercase; letter-spacing:2px; margin:0 0 4px;">
         Machine Learning Project
       </p>
-      <h1 style="font-size:2rem; font-weight:900; letter-spacing:-1px; color:#0A0A0A;
-                 margin:0 0 8px; line-height:1.15;">
+      <h1 style="font-size:1.8rem; font-weight:900; letter-spacing:-1px; color:#0A0A0A;
+                 margin:0 0 6px; line-height:1.15;">
         Blood Donation Prediction
       </h1>
-      <p style="color:#616161; font-size:0.95rem; margin:0 0 16px; line-height:1.6;">
+      <p style="color:#616161; font-size:0.9rem; margin:0 0 10px; line-height:1.5;">
         Predicting blood donor re-donation behavior using the UCI RFMTC framework,
         SMOTE oversampling &amp; a tuned Decision Tree classifier.
       </p>
-      <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:20px;">
+      <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px;">
         <span style="background:rgba(221,107,59,0.1); color:#dd6b3b;
                      border:1px solid rgba(221,107,59,0.3); border-radius:999px;
                      padding:3px 13px; font-size:0.78rem; font-weight:700;
@@ -188,20 +188,15 @@ with gr.Blocks() as demo:
         with gr.Column(scale=1):
             with gr.Group():
                 gr.HTML("<h3 style='text-align: center; margin-bottom: 15px; margin-top: 5px; color: #0A0A0A; font-family: \"Inter\", sans-serif;'>Enter Donor Information</h3>")
-                recency   = gr.Number(label="Recency — months since last donation",   value=2,    minimum=0)
-                frequency = gr.Number(label="Frequency — total donations",             value=5,    minimum=1)
-                monetary  = gr.Number(label="Monetary — total blood donated (c.c.)",  value=1250, minimum=250)
-                time      = gr.Number(label="Time — months since first donation",      value=28,   minimum=1)
+                with gr.Row():
+                    recency   = gr.Number(label="Recency (months since last)", value=2, minimum=0)
+                    frequency = gr.Number(label="Frequency (total donations)", value=5, minimum=1)
+                with gr.Row():
+                    monetary  = gr.Number(label="Monetary (total c.c.)",       value=1250, minimum=250)
+                    time      = gr.Number(label="Time (months since first)",   value=28, minimum=1)
                 btn       = gr.Button("Run Prediction", variant="primary", size="lg")
 
-            gr.Markdown("""
-**How to use**
-1. Enter the donor's RFMTC values above
-2. Click **Run Prediction**
-3. See the result and confidence score
-
-> Monetary = Frequency x 250 c.c.
-            """)
+            gr.Markdown("**How to use:** Enter the donor's RFMTC values above and click **Run Prediction**. *(Monetary = Frequency x 250 c.c.)*")
 
         # Right: Output
         with gr.Column(scale=1):
