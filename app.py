@@ -102,6 +102,27 @@ CUSTOM_CSS = """
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
     body, .gradio-container { background:#FAFAFA !important; }
     footer { display:none !important; }
+
+    /* Fix: Input labels solid black */
+    label, .label-wrap span, .gradio-container label span,
+    .gradio-container .block label span {
+        color: #0A0A0A !important;
+        font-weight: 500 !important;
+    }
+
+    /* Fix: Example table cells white background with black text */
+    .examples-table td, .examples-table th,
+    table td, table th,
+    .gallery td, .gallery th,
+    [class*="example"] td, [class*="example"] th,
+    .svelte-1wj0ocy td, .svelte-1wj0ocy th {
+        background-color: #FFFFFF !important;
+        color: #0A0A0A !important;
+    }
+    .examples-table tr:hover td,
+    table tr:hover td {
+        background-color: #FFF3E0 !important;
+    }
 """
 
 # ── Gradio UI ─────────────────────────────────────────────────────────
@@ -152,11 +173,13 @@ with gr.Blocks() as demo:
     with gr.Row(equal_height=True):
         # Left: Inputs
         with gr.Column(scale=1):
-            recency   = gr.Number(label="Recency — months since last donation",   value=2,    minimum=0)
-            frequency = gr.Number(label="Frequency — total donations",             value=5,    minimum=1)
-            monetary  = gr.Number(label="Monetary — total blood donated (c.c.)",  value=1250, minimum=250)
-            time      = gr.Number(label="Time — months since first donation",      value=28,   minimum=1)
-            btn       = gr.Button("Run Prediction", variant="primary", size="lg")
+            with gr.Group():
+                gr.Markdown("**Enter Donor Information**")
+                recency   = gr.Number(label="Recency — months since last donation",   value=2,    minimum=0)
+                frequency = gr.Number(label="Frequency — total donations",             value=5,    minimum=1)
+                monetary  = gr.Number(label="Monetary — total blood donated (c.c.)",  value=1250, minimum=250)
+                time      = gr.Number(label="Time — months since first donation",      value=28,   minimum=1)
+                btn       = gr.Button("Run Prediction", variant="primary", size="lg")
 
             gr.Markdown("""
 **How to use**
@@ -164,7 +187,7 @@ with gr.Blocks() as demo:
 2. Click **Run Prediction**
 3. See the result and confidence score
 
-> ℹ️ Monetary = Frequency × 250 c.c.
+> Monetary = Frequency x 250 c.c.
             """)
 
         # Right: Output
