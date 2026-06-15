@@ -183,7 +183,7 @@ with gr.Blocks() as demo:
     """)
 
     # ── Main layout ──
-    with gr.Row(equal_height=True):
+    with gr.Row():
         # Left: Inputs
         with gr.Column(scale=1):
             with gr.Group():
